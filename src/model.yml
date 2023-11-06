@@ -1,0 +1,42 @@
+layers:
+  - type: "Input"
+    kwargs:
+      shape:
+        - 84
+        - 84
+        - 4
+  - &layer 
+    type: "Conv2D"
+    args:
+      - 32
+      - 8
+    kwargs:
+      strides: 4
+      activation: "relu"
+  - <<: *layer
+    args:
+      - 64
+      - 4
+    kwargs:
+      strides: 2
+      activation: "relu"
+  - <<: *layer
+    args:
+      - 64
+      - 3
+    kwargs:
+      strides: 1
+      activation: "relu"
+  - type: "Flatten"
+  - type: "Dense"
+    args:
+      - 512
+    kwargs:
+      activation: "relu"
+  - type: "Dense"
+    args:
+      # TODO: Inject this as num_actions from code
+      - 4
+    kwargs:
+      activation: "linear"
+  
