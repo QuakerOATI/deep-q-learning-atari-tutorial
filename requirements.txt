@@ -1,0 +1,2 @@
+baselines @ git+https://github.com/openai/baselines@master
+ale-py
